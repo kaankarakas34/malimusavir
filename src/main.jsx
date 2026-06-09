@@ -48,7 +48,8 @@ import {
   Sliders,
   FileSpreadsheet,
   Award,
-  Check
+  Check,
+  Sparkles
 } from "lucide-react";
 import "./styles.css";
 
