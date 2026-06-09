@@ -34,7 +34,21 @@ import {
   Linkedin,
   Twitter,
   Facebook,
-  Youtube
+  Youtube,
+  Coins,
+  TrendingUp,
+  ShoppingBag,
+  Cpu,
+  HeartPulse,
+  Factory,
+  Store,
+  GraduationCap,
+  Bell,
+  FolderSync,
+  Sliders,
+  FileSpreadsheet,
+  Award,
+  Check
 } from "lucide-react";
 import "./styles.css";
 
@@ -628,10 +642,10 @@ function HeroTicker() {
 
 function TrustStrip() {
   const stats = [
-    { value: "15+", label: "Sektörel Tecrübe", sub: "Yılların getirdiği yasal mevzuat birikimi" },
-    { value: "%100", label: "Dijital İş Akışı", sub: "Kağıtsız, hızlı ve hatasız evrak yönetimi" },
-    { value: "500+", label: "Şirket Kuruluşu", sub: "Sıfırdan kurulan başarılı iş modelleri" },
-    { value: "50M+ ₺", label: "Yönetilen Teşvik", sub: "Maksimum vergi avantajı ve SGK indirimi" }
+    { value: "15+", label: "Sektörel Tecrübe", sub: "Yılların getirdiği yasal mevzuat birikimi", icon: BriefcaseBusiness },
+    { value: "%100", label: "Dijital İş Akışı", sub: "Kağıtsız, hızlı ve hatasız evrak yönetimi", icon: Laptop },
+    { value: "500+", label: "Şirket Kuruluşu", sub: "Sıfırdan kurulan başarılı iş modelleri", icon: Building2 },
+    { value: "50M+ ₺", label: "Yönetilen Teşvik", sub: "Maksimum vergi avantajı ve SGK indirimi", icon: Coins }
   ];
   return (
     <section className="bg-slate-50 py-16 border-b border-slate-100 relative overflow-hidden">
@@ -639,12 +653,17 @@ function TrustStrip() {
       <div className="mx-auto max-w-7xl px-4 lg:px-6 relative z-10">
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {stats.map((stat, idx) => (
-            <div key={idx} className="rounded-2xl border border-slate-100 bg-white p-6 shadow-[0_2px_8px_rgba(15,23,42,0.02)] hover:border-skybrand-100 hover:shadow-md transition duration-300 relative group overflow-hidden">
+            <div key={idx} className="rounded-2xl border border-slate-100 bg-white p-6 shadow-[0_2px_8px_rgba(15,23,42,0.02)] hover:border-skybrand-100 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 relative group overflow-hidden">
               <div className="absolute top-0 right-0 -mt-4 -mr-4 h-12 w-12 rounded-full bg-skybrand-50/50 group-hover:scale-150 transition-all duration-500" />
-              <span className="block text-3xl sm:text-4xl font-black text-skybrand-600 tracking-tight">
-                {stat.value}
-              </span>
-              <p className="mt-3 text-xs font-black text-navy-950 tracking-tight uppercase tracking-wider">{stat.label}</p>
+              <div className="flex justify-between items-start relative z-10">
+                <span className="block text-3xl sm:text-4xl font-black text-skybrand-600 tracking-tight">
+                  {stat.value}
+                </span>
+                <span className="grid h-10 w-10 place-items-center rounded-xl bg-skybrand-50 text-skybrand-600 group-hover:bg-skybrand-600 group-hover:text-white transition-all duration-300 shadow-sm">
+                  <stat.icon size={18} />
+                </span>
+              </div>
+              <p className="mt-4 text-xs font-black text-navy-950 tracking-wider uppercase">{stat.label}</p>
               <p className="mt-2 text-[11px] leading-5 text-slate-400 font-semibold">{stat.sub}</p>
             </div>
           ))}
@@ -671,7 +690,7 @@ function ServiceCards({ go, setSelectedService }) {
         <div className="grid gap-12 lg:grid-cols-[0.85fr_2.15fr]">
           {/* Left Column (Sticky Title) */}
           <div className="lg:sticky lg:top-28 self-start">
-            <span className="text-[10px] font-black uppercase tracking-[0.25em] text-skybrand-600 bg-skybrand-50 px-3.5 py-1.5 rounded-lg">
+            <span className="text-[10px] font-black uppercase tracking-[0.25em] text-skybrand-600 bg-skybrand-50 px-3.5 py-1.5 rounded-lg shadow-sm">
               Hizmet Yelpazemiz
             </span>
             <h2 className="mt-6 text-3xl font-black tracking-tight text-slate-900 sm:text-4xl leading-tight">
@@ -694,13 +713,14 @@ function ServiceCards({ go, setSelectedService }) {
                   setSelectedService(service);
                   go("services");
                 }}
-                className="group text-left border border-slate-100 bg-slate-50/20 p-8 rounded-2xl transition-all duration-300 hover:border-skybrand-100 hover:bg-white hover:shadow-lg hover:-translate-y-1 relative overflow-hidden flex flex-col justify-between"
+                className="group text-left border border-slate-100 bg-slate-50/20 p-8 rounded-2xl transition-all duration-300 hover:border-skybrand-100 hover:bg-white hover:shadow-xl hover:-translate-y-1 relative overflow-hidden flex flex-col justify-between min-h-[260px]"
               >
-                <span className="outline-number absolute top-2 right-4 text-5xl font-black select-none pointer-events-none">
+                <div className="absolute bottom-0 left-0 h-[3px] w-full bg-gradient-to-r from-skybrand-600 to-sky-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+                <span className="outline-number absolute top-2 right-4 text-5xl font-black select-none pointer-events-none transition-all duration-350">
                   0{index + 1}
                 </span>
                 <div>
-                  <span className="grid h-11 w-11 place-items-center rounded-xl bg-skybrand-50 text-skybrand-600 group-hover:bg-skybrand-600 group-hover:text-white transition duration-300">
+                  <span className="grid h-11 w-11 place-items-center rounded-xl bg-skybrand-50 text-skybrand-600 group-hover:bg-skybrand-600 group-hover:text-white transition-all duration-300 group-hover:scale-110 group-hover:rotate-6 shadow-sm">
                     <service.icon size={20} />
                   </span>
                   <h3 className="mt-5 text-base font-black text-navy-950 tracking-tight leading-snug">
@@ -724,16 +744,16 @@ function ServiceCards({ go, setSelectedService }) {
 
 function Audience() {
   const audiences = [
-    { title: "Startuplar & Teknoloji Şirketleri", desc: "Teknokent kurumlar vergisi muafiyetleri, Ar-Ge personeli gelir vergisi ve SGK teşviklerinin uçtan uca yönetimi.", bullets: ["Teknopark İstisnaları", "Ar-Ge Stopaj Desteği"] },
-    { title: "E-Ticaret & İhracatçılar", desc: "Sanal pos entegrasyonu, günlük fatura kesim otomasyonu, KDV iadeleri ve mikro ihracat kazanç istisnası danışmanlığı.", bullets: ["Pazaryeri API Entegrasyonu", "İhracat KDV İadesi"] },
-    { title: "KOBİ'ler & Aile Şirketleri", desc: "Maliyet muhasebesi sistemlerinin kurulması, kurumsal check-up, yasal defter ve beyanname süreçlerinin tam takibi.", bullets: ["Maliyet Muhasebesi", "Genel Kurul & Pay Takibi"] }
+    { title: "Startuplar & Teknoloji Şirketleri", desc: "Teknokent kurumlar vergisi muafiyetleri, Ar-Ge personeli gelir vergisi ve SGK teşviklerinin uçtan uca yönetimi.", bullets: ["Teknopark İstisnaları", "Ar-Ge Stopaj Desteği"], icon: Cpu },
+    { title: "E-Ticaret & İhracatçılar", desc: "Sanal pos entegrasyonu, günlük fatura kesim otomasyonu, KDV iadeleri ve mikro ihracat kazanç istisnası danışmanlığı.", bullets: ["Pazaryeri API Entegrasyonu", "İhracat KDV İadesi"], icon: ShoppingBag },
+    { title: "KOBİ'ler & Aile Şirketleri", desc: "Maliyet muhasebesi sistemlerinin kurulması, kurumsal check-up, yasal defter ve beyanname süreçlerinin tam takibi.", bullets: ["Maliyet Muhasebesi", "Genel Kurul & Pay Takibi"], icon: Building2 }
   ];
   return (
     <section className="py-24 bg-slate-50/50 border-t border-b border-slate-100 relative overflow-hidden">
       <div className="mx-auto max-w-7xl px-4 lg:px-6">
         <div className="grid gap-12 lg:grid-cols-[1.15fr_0.85fr] items-center">
           <div className="space-y-6">
-            <span className="text-[10px] font-black uppercase tracking-[0.25em] text-emerald-600 bg-emerald-50 px-3.5 py-1.5 rounded-lg">
+            <span className="text-[10px] font-black uppercase tracking-[0.25em] text-emerald-600 bg-emerald-50 px-3.5 py-1.5 rounded-lg shadow-sm">
               Kimlere Hizmet Veriyoruz?
             </span>
             <h2 className="text-3xl font-black tracking-tight text-slate-900 sm:text-4xl leading-tight">
@@ -745,15 +765,20 @@ function Audience() {
             
             <div className="space-y-4 pt-4">
               {audiences.map((aud, idx) => (
-                <div key={idx} className="rounded-2xl border border-slate-100 bg-white p-6 shadow-sm transition hover:border-skybrand-100 hover:shadow-md">
-                  <h3 className="font-black text-navy-950 text-xs uppercase tracking-wider">{aud.title}</h3>
-                  <p className="mt-2 text-[11px] leading-5 text-slate-500 font-semibold">{aud.desc}</p>
-                  <div className="mt-3 flex flex-wrap gap-2">
-                    {aud.bullets.map((b) => (
-                      <span key={b} className="text-[9px] font-bold text-skybrand-600 bg-skybrand-50 px-2.5 py-1 rounded-md">
-                        {b}
-                      </span>
-                    ))}
+                <div key={idx} className="rounded-2xl border border-slate-100 bg-white p-6 shadow-sm transition hover:border-skybrand-100 hover:shadow-md flex gap-4 items-start group">
+                  <span className="grid h-10 w-10 place-items-center rounded-xl bg-slate-50 text-slate-500 group-hover:bg-skybrand-50 group-hover:text-skybrand-600 transition-colors duration-300 shrink-0">
+                    <aud.icon size={20} />
+                  </span>
+                  <div>
+                    <h3 className="font-black text-navy-950 text-xs uppercase tracking-wider">{aud.title}</h3>
+                    <p className="mt-2 text-[11px] leading-5 text-slate-500 font-semibold">{aud.desc}</p>
+                    <div className="mt-3 flex flex-wrap gap-2">
+                      {aud.bullets.map((b) => (
+                        <span key={b} className="text-[9px] font-bold text-skybrand-600 bg-skybrand-50 px-2.5 py-1 rounded-md flex items-center gap-1">
+                          <Check size={10} /> {b}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                 </div>
               ))}
@@ -761,41 +786,57 @@ function Audience() {
           </div>
           
           {/* Visual element on the right (Premium layout element) */}
-          <div className="relative rounded-3xl bg-slate-950 p-8 text-white border border-white/5 overflow-hidden shadow-2xl min-h-[420px] flex flex-col justify-between">
+          <div className="relative rounded-3xl bg-slate-950 p-8 text-white border border-white/5 overflow-hidden shadow-2xl min-h-[460px] flex flex-col justify-between group">
             {/* Background glows */}
-            <div className="absolute -top-12 -right-12 h-64 w-64 rounded-full bg-skybrand-500/20 blur-3xl" />
-            <div className="absolute -bottom-12 -left-12 h-64 w-64 rounded-full bg-emerald-500/20 blur-3xl" />
+            <div className="absolute -top-12 -right-12 h-64 w-64 rounded-full bg-skybrand-500/20 blur-3xl group-hover:scale-110 transition-transform duration-700" />
+            <div className="absolute -bottom-12 -left-12 h-64 w-64 rounded-full bg-emerald-500/20 blur-3xl group-hover:scale-110 transition-transform duration-700" />
             
-            <div>
-              <span className="text-[9px] font-black uppercase tracking-wider text-skybrand-400">Dijital Müşteri Deneyimi</span>
-              <h3 className="mt-4 text-2xl font-black text-white leading-tight">Tüm evrak takibinizi cepten ve webden izleyin</h3>
+            {/* Grid overlay pattern */}
+            <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none" />
+            
+            <div className="relative z-10">
+              <span className="inline-flex items-center gap-1.5 text-[9px] font-black uppercase tracking-wider text-skybrand-400 bg-white/5 border border-white/10 px-3 py-1 rounded-full">
+                <Sparkles size={10} className="text-skybrand-400" /> Dijital Müşteri Deneyimi
+              </span>
+              <h3 className="mt-5 text-2xl font-black text-white leading-tight">Tüm evrak takibinizi cepten ve webden izleyin</h3>
               <p className="mt-3 text-[10px] leading-5 text-slate-400 font-semibold">
                 Excel listeleri veya kaybolan faturalarla zaman kaybetmeyin. Dijital mali portalımız üzerinden beyannamelerinize ve vergi ödemelerinize 7/24 erişin.
               </p>
             </div>
             
             {/* Visual Mock Card list inside dark column */}
-            <div className="space-y-2 mt-8 z-10">
-              <div className="rounded-xl bg-white/5 border border-white/10 p-3 flex items-center justify-between">
-                <div className="flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
-                  <span className="text-[11px] font-bold text-slate-200">KDV Beyannamesi</span>
+            <div className="space-y-3 mt-8 z-10 relative">
+              <div className="rounded-xl bg-white/5 border border-white/10 p-3.5 flex items-center justify-between hover:bg-white/10 hover:border-white/20 transition-all duration-300">
+                <div className="flex items-center gap-3">
+                  <span className="grid h-7 w-7 place-items-center rounded-lg bg-emerald-500/10 text-emerald-400"><FileCheck2 size={14} /></span>
+                  <div>
+                    <span className="block text-[11px] font-bold text-slate-200">KDV Beyannamesi</span>
+                    <span className="block text-[9px] text-slate-500">Haziran 2026</span>
+                  </div>
                 </div>
-                <span className="text-[9px] font-bold text-slate-400">Yüklendi</span>
+                <span className="text-[9px] font-black uppercase tracking-wider text-emerald-400 bg-emerald-400/10 px-2.5 py-1 rounded-md border border-emerald-400/20">Yüklendi</span>
               </div>
-              <div className="rounded-xl bg-white/5 border border-white/10 p-3 flex items-center justify-between">
-                <div className="flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-skybrand-500" />
-                  <span className="text-[11px] font-bold text-slate-200">SGK Tahakkuku</span>
+              
+              <div className="rounded-xl bg-white/5 border border-white/10 p-3.5 flex items-center justify-between hover:bg-white/10 hover:border-white/20 transition-all duration-300">
+                <div className="flex items-center gap-3">
+                  <span className="grid h-7 w-7 place-items-center rounded-lg bg-skybrand-500/10 text-skybrand-400"><FileText size={14} /></span>
+                  <div>
+                    <span className="block text-[11px] font-bold text-slate-200">SGK Tahakkuku</span>
+                    <span className="block text-[9px] text-slate-500">Haziran 2026</span>
+                  </div>
                 </div>
-                <span className="text-[9px] font-bold text-slate-400">Hazır</span>
+                <span className="text-[9px] font-black uppercase tracking-wider text-skybrand-400 bg-skybrand-400/10 px-2.5 py-1 rounded-md border border-skybrand-400/20">Hazır</span>
               </div>
-              <div className="rounded-xl bg-white/5 border border-white/10 p-3 flex items-center justify-between">
-                <div className="flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-yellow-500 animate-pulse" />
-                  <span className="text-[11px] font-bold text-slate-200">Vergi Takvimi Hatırlatıcısı</span>
+              
+              <div className="rounded-xl bg-white/5 border border-white/10 p-3.5 flex items-center justify-between hover:bg-white/10 hover:border-white/20 transition-all duration-300">
+                <div className="flex items-center gap-3">
+                  <span className="grid h-7 w-7 place-items-center rounded-lg bg-yellow-500/10 text-yellow-400"><Bell size={14} className="animate-bounce" /></span>
+                  <div>
+                    <span className="block text-[11px] font-bold text-slate-200">Geçici Vergi Hatırlatıcısı</span>
+                    <span className="block text-[9px] text-slate-500">Mali Takvim</span>
+                  </div>
                 </div>
-                <span className="text-[9px] font-bold text-yellow-500">Yarın Ödeme</span>
+                <span className="text-[9px] font-black uppercase tracking-wider text-yellow-500 bg-yellow-400/10 px-2.5 py-1 rounded-md border border-yellow-400/20">Yarın Son Gün</span>
               </div>
             </div>
           </div>
@@ -807,12 +848,12 @@ function Audience() {
 
 function WhyUs() {
   const items = [
-    { title: "Dijital Belge Aktarımı", desc: "Evraklar düzenli, izlenebilir ve arşivlenebilir biçimde dijital kanallarla toplanır." },
-    { title: "Yakın Yükümlülük Takibi", desc: "Yaklaşan vergi, beyan ve SGK ödeme tarihleri periyodik olarak hatırlatılır." },
-    { title: "Düzenli Mali Raporlama", desc: "İşletme sahibi yalnızca vergisini değil, şirketin net mali gidişatını da görür." },
-    { title: "Ulaşılabilir Danışmanlık", desc: "Sorulara hızlı dönüş, anlaşılır açıklamalar ve butik danışmanlık standardı." },
-    { title: "Sektörel Uzmanlık", desc: "E-ticaret, yazılım ve teknoloji gibi dinamik sektörlerin teşviklerine tam hakimiyet." },
-    { title: "Mevzuat Sadeleştirmesi", desc: "Karmaşık yasal değişiklikler, işletmenize etkisi analiz edilerek sade dille aktarılır." }
+    { title: "Dijital Belge Aktarımı", desc: "Evraklar düzenli, izlenebilir ve arşivlenebilir biçimde dijital kanallarla toplanır.", icon: FolderSync },
+    { title: "Yakın Yükümlülük Takibi", desc: "Yaklaşan vergi, beyan ve SGK ödeme tarihleri periyodik olarak hatırlatılır.", icon: Bell },
+    { title: "Düzenli Mali Raporlama", desc: "İşletme sahibi yalnızca vergisini değil, şirketin net mali gidişatını da görür.", icon: BarChart3 },
+    { title: "Ulaşılabilir Danışmanlık", desc: "Sorulara hızlı dönüş, anlaşılır açıklamalar ve butik danışmanlık standardı.", icon: MessageCircle },
+    { title: "Sektörel Uzmanlık", desc: "E-ticaret, yazılım ve teknoloji gibi dinamik sektörlerin teşviklerine tam hakimiyet.", icon: Award },
+    { title: "Mevzuat Sadeleştirmesi", desc: "Karmaşık yasal değişiklikler, işletmenize etkisi analiz edilerek sade dille aktarılır.", icon: BookOpen }
   ];
   return (
     <section className="bg-slate-950 py-24 text-white relative overflow-hidden">
@@ -828,10 +869,15 @@ function WhyUs() {
         
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 z-10 relative">
           {items.map((item, idx) => (
-            <div key={idx} className="dark-glow-card group">
-              <div className="absolute top-0 left-0 h-0.5 w-full bg-gradient-to-r from-skybrand-500 to-emerald-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
-              <h3 className="font-black text-white text-base tracking-tight">{item.title}</h3>
-              <p className="mt-3 text-xs leading-6 text-slate-400 font-medium">{item.desc}</p>
+            <div key={idx} className="dark-glow-card group flex flex-col justify-between min-h-[220px]">
+              <div className="absolute top-0 left-0 h-[3px] w-full bg-gradient-to-r from-skybrand-500 to-emerald-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+              <div>
+                <span className="grid h-10 w-10 place-items-center rounded-xl bg-white/5 text-skybrand-400 group-hover:bg-skybrand-600 group-hover:text-white transition-all duration-300 shadow-sm mb-5 group-hover:scale-110 group-hover:rotate-6">
+                  <item.icon size={18} />
+                </span>
+                <h3 className="font-black text-white text-base tracking-tight">{item.title}</h3>
+                <p className="mt-3 text-xs leading-6 text-slate-400 font-medium">{item.desc}</p>
+              </div>
             </div>
           ))}
         </div>
@@ -842,27 +888,34 @@ function WhyUs() {
 
 function HowItWorks() {
   const steps = [
-    { title: "Ön Görüşme", desc: "İşletmenizin yapısını, büyüme planlarını ve mevcut vergi modelinizi dinliyoruz." },
-    { title: "İhtiyaç Analizi", desc: "Mevcut beyannameleri, vergi risklerini ve teşvik imkanlarını tarıyoruz." },
-    { title: "Süreç Kurulumu", desc: "Entegrasyonları kuruyor ve dijital evrak akışını başlatıyoruz." },
-    { title: "Sürekli Raporlama", desc: "Muhasebenizi tutarken aylık gelir-gider ve vergi planlama raporlarını sunuyoruz." }
+    { title: "Ön Görüşme", desc: "İşletmenizin yapısını, büyüme planlarını ve mevcut vergi modelinizi dinliyoruz.", icon: MessageCircle },
+    { title: "İhtiyaç Analizi", desc: "Mevcut beyannameleri, vergi risklerini ve teşvik imkanlarını tarıyoruz.", icon: SearchCheck },
+    { title: "Süreç Kurulumu", desc: "Entegrasyonları kuruyor ve dijital evrak akışını başlatıyoruz.", icon: Sliders },
+    { title: "Sürekli Raporlama", desc: "Muhasebenizi tutarken aylık gelir-gider ve vergi planlama raporlarını sunuyoruz.", icon: FileSpreadsheet }
   ];
   return (
     <section className="py-24 bg-white relative">
       <div className="mx-auto max-w-7xl px-4 lg:px-6">
         <SectionIntro eyebrow="Süreç Adımları" title="Sıfırdan düzenli takibe geçiş yol haritası" />
         
-        <div className="relative mt-16 grid gap-8 md:grid-cols-4">
+        <div className="relative mt-20 grid gap-8 md:grid-cols-4">
           {/* Line connector for desktop */}
-          <div className="absolute top-6 left-8 right-8 hidden h-0.5 border-t border-dashed border-slate-200 md:block pointer-events-none" />
+          <div className="absolute top-8 left-16 right-16 hidden h-0.5 border-t border-dashed border-slate-200 md:block pointer-events-none" />
           
           {steps.map((step, index) => (
             <div key={step.title} className="relative z-10 flex flex-col items-center text-center group">
-              <span className="grid h-12 w-12 place-items-center rounded-full bg-white border-2 border-skybrand-500 font-black text-skybrand-600 text-xs shadow-md group-hover:bg-skybrand-600 group-hover:text-white transition duration-350">
-                {index + 1}
-              </span>
+              <div className="relative">
+                {/* Step badge */}
+                <span className="absolute -top-2 -right-2 z-20 flex h-6 w-6 items-center justify-center rounded-full bg-emerald-500 font-bold text-white text-[10px] shadow-sm border border-white">
+                  0{index + 1}
+                </span>
+                {/* Step icon circle */}
+                <span className="grid h-16 w-16 place-items-center rounded-2xl bg-white border-2 border-skybrand-500 text-skybrand-600 shadow-md group-hover:bg-skybrand-600 group-hover:text-white transition-all duration-300 transform group-hover:scale-105 group-hover:rotate-3">
+                  <step.icon size={24} />
+                </span>
+              </div>
               <h3 className="mt-6 font-black text-navy-950 text-sm tracking-tight">{step.title}</h3>
-              <p className="mt-2 text-[11px] leading-5 text-slate-500 font-semibold px-2">{step.desc}</p>
+              <p className="mt-2 text-[11px] leading-5 text-slate-500 font-semibold px-4">{step.desc}</p>
             </div>
           ))}
         </div>
@@ -879,7 +932,7 @@ function FounderMini() {
           <img
             className="h-[380px] w-full rounded-tr-[100px] rounded-bl-[100px] object-cover shadow-lg border border-slate-100"
             src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=1200&q=85"
-            alt="Kurucu mali müşavir profesyonel portre"
+            alt="Kurucu SMMM Soner Yılmaz profesyonel portre"
           />
           <div className="absolute -bottom-4 right-4 rounded-xl bg-white border border-slate-150 p-4 shadow-lg">
             <span className="block text-2xl font-black text-skybrand-600">15+ Yıllık</span>
@@ -888,9 +941,9 @@ function FounderMini() {
         </div>
         
         <div className="space-y-5">
-          <span className="text-[10px] font-black uppercase tracking-[0.25em] text-skybrand-600 bg-skybrand-50 px-3 py-1.5 rounded-lg">Kurucu Mali Müşavir</span>
+          <span className="text-[10px] font-black uppercase tracking-[0.25em] text-skybrand-600 bg-skybrand-50 px-3 py-1.5 rounded-lg shadow-sm inline-block">Kurucu Mali Müşavir</span>
           <h2 className="text-3xl font-black text-slate-900 tracking-tight leading-tight">Soner Yılmaz, SMMM</h2>
-          <p className="text-xs leading-6 text-slate-605 font-medium">
+          <p className="text-xs leading-6 text-slate-600 font-medium">
             Marmara Üniversitesi İktisat Fakültesi mezunudur. Mali müşavirlik, vergi planlaması, şirket kuruluşları ve finansal raporlama alanlarında 15 yılı aşkın deneyime sahiptir. Dijital muhasebe süreçleri ve teknoloji odaklı girişimlerin vergilendirilmesi konusunda uzmanlaşmıştır. İstanbul SMMM Odası üyesidir.
           </p>
           
@@ -900,6 +953,22 @@ function FounderMini() {
             "İşletmenizin mali yüklerini tamamen üzerimizden alıyor, devlet teşviklerini en üst düzeyde uygulayarak sadece büyümenize odaklanmanızı sağlıyoruz."
             <span className="block mt-2 not-italic font-bold text-navy-950 text-right">— Soner Yılmaz</span>
           </div>
+          
+          {/* Credentials Grid */}
+          <div className="grid grid-cols-3 gap-3 pt-2">
+            <div className="rounded-xl border border-slate-100 bg-white p-3 text-center shadow-[0_2px_6px_rgba(15,23,42,0.01)] hover:border-skybrand-100 transition duration-300">
+              <span className="block text-skybrand-600"><Award size={16} className="mx-auto mb-1.5" /></span>
+              <span className="block text-[9px] font-black text-slate-800 uppercase tracking-wider">İSMMMO Üyesi</span>
+            </div>
+            <div className="rounded-xl border border-slate-100 bg-white p-3 text-center shadow-[0_2px_6px_rgba(15,23,42,0.01)] hover:border-skybrand-100 transition duration-300">
+              <span className="block text-skybrand-600"><CheckCircle2 size={16} className="mx-auto mb-1.5" /></span>
+              <span className="block text-[9px] font-black text-slate-800 uppercase tracking-wider">KGK Denetçi</span>
+            </div>
+            <div className="rounded-xl border border-slate-100 bg-white p-3 text-center shadow-[0_2px_6px_rgba(15,23,42,0.01)] hover:border-skybrand-100 transition duration-300">
+              <span className="block text-skybrand-600"><BookOpen size={16} className="mx-auto mb-1.5" /></span>
+              <span className="block text-[9px] font-black text-slate-800 uppercase tracking-wider">Marmara Mezunu</span>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -907,6 +976,20 @@ function FounderMini() {
 }
 
 function SectorPreview({ go }) {
+  const getSectorIcon = (sector) => {
+    switch (sector) {
+      case "E-ticaret": return ShoppingBag;
+      case "Yazılım ve teknoloji": return Cpu;
+      case "Sağlık": return HeartPulse;
+      case "İnşaat ve gayrimenkul": return Building2;
+      case "Üretim ve sanayi": return Factory;
+      case "İhracat ve ithalat": return Globe2;
+      case "Perakende": return Store;
+      case "Eğitim": return GraduationCap;
+      default: return BriefcaseBusiness;
+    }
+  };
+
   return (
     <section className="py-20 bg-white">
       <div className="mx-auto max-w-7xl px-4 lg:px-6">
@@ -915,16 +998,22 @@ function SectorPreview({ go }) {
           title="Her sektöre aynı mali şablon uygulanmaz"
           text="Gelir modeli, belge akışı, teşvik ihtimali ve vergisel riskler sektöre göre değişir. Sektörünüze özel yaklaşımı inceleyin."
         />
-        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-          {sectors.slice(0, 8).map((sector) => (
-            <button 
-              key={sector} 
-              onClick={() => go("sectors")} 
-              className="rounded-xl border border-slate-100 p-5 text-left font-bold text-sm text-slate-800 hover:border-skybrand-500 hover:text-skybrand-600 hover:shadow-sm transition duration-300"
-            >
-              {sector}
-            </button>
-          ))}
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {sectors.slice(0, 8).map((sector) => {
+            const Icon = getSectorIcon(sector);
+            return (
+              <button 
+                key={sector} 
+                onClick={() => go("sectors")} 
+                className="group rounded-xl border border-slate-100 p-5 text-left font-bold text-sm text-slate-800 hover:border-skybrand-500 hover:text-skybrand-600 hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 flex items-center gap-3 bg-slate-50/20 hover:bg-white"
+              >
+                <span className="grid h-9 w-9 place-items-center rounded-xl bg-slate-100 text-slate-500 group-hover:bg-skybrand-50 group-hover:text-skybrand-600 transition-colors duration-300 shrink-0 shadow-sm">
+                  <Icon size={16} />
+                </span>
+                <span className="truncate font-black text-navy-950 tracking-tight text-xs uppercase tracking-wide">{sector}</span>
+              </button>
+            );
+          })}
         </div>
         <div className="mt-10 text-center">
           <button onClick={() => go("sectors")} className="secondary-btn">
@@ -1002,7 +1091,7 @@ function KnowledgePreview() {
       <div className="mx-auto max-w-7xl px-4 lg:px-6 relative z-10">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
           <div>
-            <span className="text-[10px] font-black uppercase tracking-[0.25em] text-skybrand-600 bg-skybrand-50 px-3.5 py-1.5 rounded-lg">
+            <span className="text-[10px] font-black uppercase tracking-[0.25em] text-skybrand-600 bg-skybrand-50 px-3.5 py-1.5 rounded-lg shadow-sm">
               Bilgi Kütüphanesi
             </span>
             <h2 className="mt-4 text-3xl font-black tracking-tight text-slate-900 sm:text-4xl leading-tight">
@@ -1037,6 +1126,7 @@ function KnowledgePreview() {
             {/* Featured Post (Left Column) */}
             {featuredPost && (
               <div className="group rounded-3xl border border-slate-100 bg-white overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 flex flex-col justify-between min-h-[460px] relative">
+                <div className="absolute bottom-0 left-0 h-[3px] w-full bg-gradient-to-r from-skybrand-600 to-sky-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
                 <div className="h-64 w-full overflow-hidden relative">
                   <img
                     className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
@@ -1044,7 +1134,7 @@ function KnowledgePreview() {
                     alt={featuredPost.title}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-white via-white/10 to-transparent" />
-                  <span className="absolute top-4 left-4 text-[10px] font-black uppercase tracking-wider text-white bg-skybrand-600 px-3 py-1.5 rounded-lg">
+                  <span className="absolute top-4 left-4 text-[10px] font-black uppercase tracking-wider text-white bg-skybrand-600 px-3 py-1.5 rounded-lg shadow-md">
                     {featuredPost.category}
                   </span>
                 </div>
@@ -1077,11 +1167,12 @@ function KnowledgePreview() {
               {listPosts.map((post) => (
                 <div
                   key={post.id}
-                  className="group rounded-2xl border border-slate-100 bg-white p-4 shadow-[0_2px_8px_rgba(15,23,42,0.01)] hover:shadow-md hover:border-skybrand-100 transition duration-300 flex gap-4 items-center cursor-pointer"
+                  className="group rounded-2xl border border-slate-100 bg-white p-4 shadow-[0_2px_8px_rgba(15,23,42,0.01)] hover:shadow-lg hover:border-skybrand-100 transition duration-300 flex gap-4 items-center cursor-pointer relative overflow-hidden"
                 >
-                  <div className="h-20 w-20 rounded-xl overflow-hidden shrink-0">
+                  <div className="absolute bottom-0 left-0 h-[2px] w-full bg-gradient-to-r from-skybrand-600 to-sky-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+                  <div className="h-20 w-20 rounded-xl overflow-hidden shrink-0 relative">
                     <img
-                      className="h-full w-full object-cover group-hover:scale-105 transition duration-500"
+                      className="h-full w-full object-cover group-hover:scale-110 transition duration-500"
                       src={post.image}
                       alt={post.title}
                     />
@@ -1097,10 +1188,13 @@ function KnowledgePreview() {
                     <p className="mt-1 text-[10px] leading-4 text-slate-500 font-medium line-clamp-2">
                       {post.summary}
                     </p>
-                    <div className="flex items-center gap-3 text-[9px] font-bold text-slate-400 mt-2">
-                      <span>{post.date}</span>
-                      <span>•</span>
-                      <span>{post.readTime}</span>
+                    <div className="flex items-center justify-between text-[9px] font-bold text-slate-400 mt-2">
+                      <div className="flex items-center gap-3">
+                        <span>{post.date}</span>
+                        <span>•</span>
+                        <span>{post.readTime}</span>
+                      </div>
+                      <span className="text-skybrand-600 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition duration-300"><ArrowRight size={12} /></span>
                     </div>
                   </div>
                 </div>
