@@ -1,0 +1,148 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    font-family: Inter, "Segoe UI", Arial, sans-serif;
+    background: #ffffff;
+    @apply text-slate-900 antialiased;
+  }
+
+  button,
+  a,
+  input,
+  select,
+  textarea {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+@layer components {
+  /* Shadcn-like Buttons with Micro-interactions */
+  .primary-btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-skybrand-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-skybrand-600/10 transition-all duration-300 hover:-translate-y-0.5 hover:bg-skybrand-500 hover:shadow-skybrand-600/20 active:translate-y-0;
+  }
+
+  .secondary-btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-6 py-3 text-sm font-semibold text-slate-800 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:bg-slate-50 hover:border-slate-300 active:translate-y-0;
+  }
+  
+  .dark-btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-slate-900 px-6 py-3 text-sm font-semibold text-white shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:bg-slate-800 active:translate-y-0;
+  }
+
+  .glass-btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-white/20 bg-white/10 px-6 py-3 text-sm font-semibold text-white backdrop-blur-md transition-all duration-300 hover:bg-white/25 hover:border-white/30;
+  }
+
+  .side-action {
+    @apply inline-flex items-center gap-3 rounded-lg border border-slate-100 bg-white/90 px-4 py-3 text-xs font-bold shadow-[0_4px_16px_rgba(15,23,42,0.06)] backdrop-blur-md transition-all duration-300 hover:-translate-x-1.5 hover:bg-white hover:text-skybrand-600 hover:shadow-[0_4px_20px_rgba(8,119,188,0.15)] hover:border-skybrand-100;
+  }
+
+  /* Shadcn-like Cards */
+  .shadcn-card {
+    @apply rounded-2xl border border-slate-100 bg-white p-6 shadow-[0_2px_8px_rgba(15,23,42,0.03)] transition-all duration-300 hover:border-skybrand-100 hover:shadow-[0_20px_40px_rgba(8,119,188,0.06)] hover:-translate-y-1;
+  }
+
+  .service-photo-card {
+    @apply overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-[0_2px_8px_rgba(15,23,42,0.03)] transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_20px_45px_rgba(8,119,188,0.08)] hover:border-skybrand-100;
+  }
+
+  .form-field {
+    @apply w-full rounded-lg border border-slate-200 bg-white px-4 py-3 text-sm font-semibold text-slate-800 outline-none transition-all duration-300 placeholder:text-slate-400 focus:border-skybrand-500 focus:ring-4 focus:ring-skybrand-100;
+  }
+
+  .contact-line {
+    @apply flex items-center gap-3 rounded-lg bg-white/5 border border-white/10 p-4 text-sm font-semibold text-slate-200 transition-all duration-300 hover:bg-white/10 hover:text-white hover:border-white/20;
+  }
+
+  .ticker-track {
+    animation: ticker-slide 30s linear infinite;
+  }
+
+  /* Outline numbers for dynamic layouts */
+  .outline-number {
+    -webkit-text-stroke: 1.5px rgba(8, 119, 188, 0.12);
+    color: transparent;
+    transition: -webkit-text-stroke 0.3s ease;
+  }
+
+  .group:hover .outline-number {
+    -webkit-text-stroke: 1.5px rgba(8, 119, 188, 0.28);
+  }
+
+  /* Dark theme card glow */
+  .dark-glow-card {
+    @apply relative overflow-hidden rounded-2xl border border-white/5 bg-slate-900/40 p-6 backdrop-blur-md transition-all duration-300 hover:border-skybrand-500/35 hover:-translate-y-1;
+  }
+}
+
+/* Animations */
+@keyframes ticker-slide {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.4s ease-out forwards;
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Delay classes */
+.delay-100 {
+  animation-delay: 100ms;
+}
+.delay-200 {
+  animation-delay: 200ms;
+}
+.delay-300 {
+  animation-delay: 300ms;
+}
